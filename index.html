@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Progress Bar Example</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Driving License Renewal</h1>
+      <div class="card">
+        <div id="progress-bar"></div>
+        <h2>Let's get started!</h2>
+        <p>Add your details (As per your registered records)</p>
+        <div id="questionContainer1">
+          <div class="question">
+            <span for="answer1">Name</span><br />
+            <input type="text" id="answer1" class="answer" placeholder="Enter Name" />
+          </div>
+          <span for="answer2">Nature of Driving License</span><br />
+          <div class="question radio">
+            <div>
+              <input type="radio" id="option1" name="answer2" class="answer" value="option1" />
+              <label for="option1">Private</label>
+            </div>
+            <div>
+              <input type="radio" id="option2" name="answer2" class="answer" value="option2" />
+              <label for="option2">Commercial</label>
+            </div>
+          </div>
+          <span for="answer2">Type of Previous Driving License</span><br />
+          <div class="question radio">
+            <div>
+              <input type="radio" id="option3" name="answer3" class="answer" value="option4" />
+              <label for="option1">Paper Driving License</label>
+            </div>
+            <div>
+              <input type="radio" id="option4" name="answer3" class="answer" value="option5" />
+              <label for="option2">Smart Driving License</label>
+            </div>
+          </div>
+          <div class="button">
+            <button onclick="hideQuestionContainer1()">next</button>
+          </div>
+        </div>
+        <!-- Add more questions here if needed -->
+        <div id="questionContainer2" style="display: none">
+          <!-- <div id="questionContainer2"> -->
+          <div class="question">
+            <span for="answer1">Place where Driving License was issued</spa><br />
+            <input type="text" id="answer1" class="answer" placeholder="Enter place name" />
+          </div>
+          <div class="question">
+            <span for="answer3">Issued year of License</span><br />
+            <select id="answer3" class="answer">
+              <option value="" disabled selected>Choose Issued year of License</option>
+              <option value="option1">2023</option>
+              <option value="option2">2024</option>
+            </select>
+          </div>
+          <div class="question">
+            <span for="answer3">Type of Previous Driving License</sp><br />
+            <select id="answer3" class="answer">
+              <option value="" disabled selected>Choose Expired year of License</option>
+              <option value="option1">2023</option>
+              <option value="option2">2022</option>
+            </select>
+          </div>
+          <!-- Add more questions here if needed -->
+          <div class="button">
+            <button onclick="hideQuestionContainer2()">back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Function to update progress bar
+      function updateProgressBar() {
+        const filledCount = [...document.querySelectorAll(".answer")].filter((input) => {
+          if (input.type === "text") {
+            return input.value.trim().length > 3;
+          } else if (input.type === "radio") {
+            return input.checked;
+          } else if (input.tagName.toLowerCase() === "select" && input.value !== "") {
+            return true;
+          }
+          return false; // Exclude empty placeholder option from count
+        }).length;
+        const totalCount = document.querySelectorAll(".answer").length - 1; // Subtract 1 for placeholder option
+        const percentage = (filledCount / totalCount) * 100;
+        const progressBar = document.getElementById("progress-bar");
+        progressBar.style.width = percentage + "%";
+      }
+
+      // Function to handle input event
+      function handleInput() {
+        updateProgressBar();
+      }
+
+      // Add event listeners to input fields
+      const answerInputs = document.querySelectorAll(".answer");
+      answerInputs.forEach((input) => {
+        input.addEventListener("input", handleInput);
+      });
+      function hideQuestionContainer2() {
+        questionContainer1.style.display = "block";
+        questionContainer2.style.display = "none";
+      }
+      function hideQuestionContainer1() {
+        questionContainer2.style.display = "block";
+        questionContainer1.style.display = "none";
+      }
+      const questionContainer1 = document.querySelector("#questionContainer1");
+      const questionContainer2 = document.querySelector("#questionContainer2");
+    </script>
+  </body>
+</html>

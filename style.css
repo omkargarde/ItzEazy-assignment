@@ -1,0 +1,107 @@
+body {
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.container {
+  max-width: 70ch;
+  margin-inline: auto;
+}
+
+#progress-bar {
+  width: 0%;
+  height: 20px;
+  background-color: #4caf50;
+  margin-top: 10px;
+  transition: width 0.5s ease;
+}
+
+.card {
+  background-color: white;
+  padding-inline: 1.5rem;
+  padding-bottom: 1rem;
+}
+h1 {
+  padding-top: 2rem;
+  color: white;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 0;
+  color: red;
+  text-align: center;
+}
+p {
+  color: gray;
+  text-align: center;
+}
+label {
+  color: gray;
+  line-height: 1.5rem;
+}
+input {
+  background-color: hsl(0, 0%, 95%);
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem;
+  padding-left: 1.5rem;
+}
+
+input[type="text"] {
+  width: 90%;
+  margin-block: 12px;
+}
+.radio {
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+}
+.radio div {
+  margin-block: 12px;
+
+  width: 45%;
+  background-color: hsl(0, 0%, 95%);
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+.radio > div > label {
+  color: gray;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button button {
+  background-color: red;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  padding-inline: 4rem;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+select {
+  background-color: hsl(0, 0%, 95%);
+  border: none;
+  border-radius: 12px;
+  width: 97%;
+  padding-left: 1.125rem;
+  color: gray;
+  padding-block: 12px;
+  margin-block: 12px;
+}
